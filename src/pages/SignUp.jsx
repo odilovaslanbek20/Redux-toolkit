@@ -30,7 +30,7 @@ function SignUp() {
 
 	return (
 		<div
-			className='w-full mt-[-60px]  bg-gray-100 pt-[90px] flex items-center justify-center p-4'
+			className='w-full min-h-[500px] h-[776px] mt-[-60px] bg-gray-100 pt-[80px] flex items-center justify-center p-8'
 			style={{
 				backgroundImage:
 					"url('https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1950&q=80')",
@@ -41,7 +41,7 @@ function SignUp() {
 		>
 			<form
 				onSubmit={handleSubmit}
-				className='max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg'
+				className='w-full max-w-[400px] mx-auto bg-white/70  backdrop-blur-md p-8 rounded-lg shadow-lg'
 			>
 				<h2 className='text-2xl font-semibold text-center mb-6'>Kirish</h2>
 
@@ -54,7 +54,7 @@ function SignUp() {
 					</label>
 					<input
 						id='fullname'
-						className='w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+						className='w-full mt-2 p-3 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
 						type='text'
 						value={fullname}
 						onChange={e => setFullname(e.target.value)}
@@ -71,7 +71,7 @@ function SignUp() {
 					</label>
 					<input
 						id='email'
-						className='w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+						className='w-full mt-2 p-3 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
 						type='email'
 						value={email}
 						onChange={e => setEmail(e.target.value)}
