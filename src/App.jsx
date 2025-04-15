@@ -4,7 +4,6 @@ import {
 	Navigate,
 	Outlet,
 	Link,
-	useNavigate,
 } from 'react-router-dom'
 import SignUp from './pages/SignUp'
 import Profile from './pages/Profile'
@@ -18,7 +17,6 @@ function ProtectedRoute({ token }) {
 
 function App() {
 	const [token, setToken] = useState(null)
-	const navigate = useNavigate()
 
 	useEffect(() => {
 		const interval = setInterval(() => {
@@ -31,7 +29,6 @@ function App() {
 	const handleLogout = () => {
 		localStorage.clear()
 		setToken(null)
-		navigate('/')
 	}
 
 	return (
@@ -76,7 +73,6 @@ function App() {
 
 			<div className='pt-24'>
 				<Routes>
-					{!token ? navigate("/"): navigate("/user")}
 
 					<Route path='/' element={<SignUp />} />
 

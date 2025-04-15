@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../redux/authSlice'
-import { useNavigate } from 'react-router-dom'
 
 function SignUp() {
 	const dispatch = useDispatch()
 	const value = useSelector(state => state.auth)
-	const navigate = useNavigate()
 
 	const [fullname, setFullname] = useState('')
 	const [email, setEmail] = useState('')
@@ -19,12 +17,11 @@ function SignUp() {
 
 		dispatch(login({ user, token }))
 	}
-
+	
 	useEffect(() => {
 		if (value.token) {
 			localStorage.setItem('token', value?.token)
 			console.log('Token saqlandi:', value?.token)
-			navigate('user')
 		}
 	}, [value?.token])
 
