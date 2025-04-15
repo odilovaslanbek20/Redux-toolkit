@@ -1,16 +1,23 @@
-import { Route, Routes, Navigate, Outlet, Link, useNavigate } from 'react-router-dom'
+import {
+	Route,
+	Routes,
+	Navigate,
+	Outlet,
+	Link,
+	useNavigate,
+} from 'react-router-dom'
 import SignUp from './pages/SignUp'
 import Profile from './pages/Profile'
 import User from './pages/User'
 import { useEffect, useState } from 'react'
-import { FaArrowRightFromBracket } from "react-icons/fa6";
+import { FaArrowRightFromBracket } from 'react-icons/fa6'
 
 function ProtectedRoute({ token }) {
-	return token ? <Outlet /> : <Navigate to="/" />;
+	return token ? <Outlet /> : <Navigate to='/' />
 }
 
 function App() {
-	const [token, setToken] = useState(localStorage.getItem('token'))
+	const [token, setToken] = useState(null)
 	const navigate = useNavigate()
 
 	useEffect(() => {
@@ -24,7 +31,7 @@ function App() {
 	const handleLogout = () => {
 		localStorage.clear()
 		setToken(null)
-		navigate("/")
+		navigate('/')
 	}
 
 	return (
@@ -44,7 +51,10 @@ function App() {
 										</Link>
 									</li>
 									<li>
-										<span onClick={handleLogout} className='hover:text-blue-200 flex items-center gap-1.5 cursor-pointer'>
+										<span
+											onClick={handleLogout}
+											className='hover:text-blue-200 flex items-center gap-1.5 cursor-pointer'
+										>
 											<p>Log out</p>
 											<FaArrowRightFromBracket />
 										</span>
@@ -66,14 +76,16 @@ function App() {
 
 			<div className='pt-24'>
 				<Routes>
+					{!token ? navigate("/"): navigate("/user")}
+
 					<Route path='/' element={<SignUp />} />
-					
+
 					<Route element={<ProtectedRoute token={token} />}>
 						<Route path='/user' element={<User />} />
 						<Route path='/user/:id' element={<Profile />} />
 					</Route>
 
-					<Route path="*" element={<Navigate to="/" />} />
+					<Route path='*' element={<Navigate to='/' />} />
 				</Routes>
 			</div>
 		</>
